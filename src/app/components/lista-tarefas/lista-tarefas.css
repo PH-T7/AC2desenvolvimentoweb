@@ -1,0 +1,11 @@
+.btn-remover {
+  background-color: red;
+  color: white;
+  margin-left: 5px;
+}
+
+.btn-concluir {
+  background-color: green;
+  color: white;
+  margin-left: 10px;
+}

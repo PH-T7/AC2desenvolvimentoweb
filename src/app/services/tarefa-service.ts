@@ -1,47 +1,36 @@
 import { Injectable } from '@angular/core';
-import {Tarefa} from './tarefa.interface';
-
+import { Tarefa } from './tarefa.interface';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-
 export class TarefaService {
+  private tarefas: Tarefa[] = [];
+  private nextId = 1;
 
-   private tarefas: Tarefa[] = [];
-   private nextId = 1;
- 
-   constructor() {}
+  constructor() {}
 
-  getTarefas(): Tarefa[]{
-  return this.tarefas;
+  getTarefas(): Tarefa[] {
+    return this.tarefas;
   }
 
-  adicionarLista(nome: string){
-    if(!nome ) return;
+  adicionar(nome: string) {
+    if (!nome) return;
 
-    const novaTarefa = {
-
+    const novaTarefa: Tarefa = {
+      id: this.nextId++,
+      nome,
+      concluida: false,
+    };
+    this.tarefas.push(novaTarefa);
+  }
+  remover(id: number) {
+    this.tarefas = this.tarefas.filter((tarefa) => tarefa.id !== id);
+  }
+  marcarConcluida(id: number) {
+    const tarefa = this.tarefas.find((tarefa) => tarefa.id === id);
+    if (tarefa) {
+      tarefa.concluida = !tarefa.concluida;
     }
-
   }
-  removerLista(){
-
-  }
-
-
-
-  prazoDeConclusao(){
-
-  } 
-
-  marcarConcluida(){
-
-  }
-
-
-
-
 }
-
-

@@ -1,4 +1,5 @@
-export interface Tarefa{
-    id = Number;
-    nome: String;
+export interface Tarefa {
+  id: number;
+  nome: string;
+  concluida: boolean;
 }

@@ -1,1 +1,19 @@
-<p>lista-tarefas works!</p>
+<h3>Lista de Tarefas</h3>
+
+<ul>
+  @for (tarefa of tarefas; track tarefa.id) {
+  <li>
+    <span [style.text-decoration]="tarefa.concluida ? 'line-through' : 'none'">
+      {{ tarefa.nome }}
+    </span>
+
+    <button class="btn-concluir" (click)="concluir(tarefa.id)">Concluir</button>
+
+    <button class="btn-remover" (click)="remover(tarefa.id)">Remover</button>
+  </li>
+  } @empty {
+  <p>Nenhuma tarefa cadastrada</p>
+  }
+</ul>
+
+<a routerLink="/cadastro">Voltar ao Cadastro</a>
